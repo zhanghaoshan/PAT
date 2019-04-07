@@ -1,0 +1,37 @@
+#include<iostream>
+#include<stack>
+using namespace std;
+
+int main(){
+	char num[10][5]={"ling","yi","er","san","si","wu","liu","qi","ba","jiu"};
+	char s[100];
+	cin>>s;
+	int result=0,i=0;
+	while(s[i]!='\0'){
+		result=result+s[i]-'0';
+		i++;
+	}
+	int a=0;
+	stack<int> stack;
+	if (result==0){
+		cout<<"ling";
+		return 0;
+	}
+	while(result!=0){
+		a=result%10;
+		result=result/10;
+		stack.push(a);
+	}
+	a=stack.top();
+	stack.pop();
+	cout<<num[a];
+	while(!stack.empty()){
+		cout<<" ";
+		a=stack.top();
+		stack.pop();
+		cout<<num[a];
+	}
+
+}
+
+
